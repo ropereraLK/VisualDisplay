@@ -11,6 +11,9 @@
     <title>Main</title>
 
     <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
 </head>
 <body>
 
@@ -18,8 +21,12 @@
    
     <div class="row">
         <!-- 2 row Starts -->
+        @for (int i = 0; i < 8; i++)
+        {
 
-        <div class="col-lg-3 col-md-6">
+
+
+        <div class="col-lg-3 col-md-6" style="min-height:100%">
             <!-- col-lg-3 col-md-6 Starts -->
 
             <div class="panel panel-primary">
@@ -28,7 +35,7 @@
                 <div class="panel-heading">
                     <!-- panel-heading Starts -->
 
-                    <div class="row">
+                    <div class="row" >
                         <!-- panel-heading row Starts -->
 
                         <div class="col-xs-3">
@@ -48,6 +55,83 @@
                         </div><!-- col-xs-9 text-right Ends -->
 
                     </div><!-- panel-heading row Ends -->
+                <div class="row">
+                    <style>
+                        #chartdiv {
+                            width: 100%;
+                            height: 500px;
+                           
+
+
+                        }
+                    </style>
+
+                    <!-- Resources -->
+                    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+                    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+                    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+                    <!-- Chart code -->
+                    <script>
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdiv", am4charts.PieChart);
+
+// Add data
+chart.data = [ {
+  "country": "Lithuania",
+  "litres": 501.9
+}, {
+  "country": "Czechia",
+  "litres": 301.9
+}, {
+  "country": "Ireland",
+  "litres": 201.1
+}, {
+  "country": "Germany",
+  "litres": 165.8
+}, {
+  "country": "Australia",
+  "litres": 139.9
+}, {
+  "country": "Austria",
+  "litres": 128.3
+}, {
+  "country": "UK",
+  "litres": 99
+}, {
+  "country": "Belgium",
+  "litres": 60
+}, {
+  "country": "The Netherlands",
+  "litres": 50
+} ];
+
+// Add and configure Series
+var pieSeries = chart.series.push(new am4charts.PieSeries());
+pieSeries.dataFields.value = "litres";
+pieSeries.dataFields.category = "country";
+pieSeries.slices.template.stroke = am4core.color("#fff");
+pieSeries.slices.template.strokeWidth = 2;
+pieSeries.slices.template.strokeOpacity = 1;
+
+// This creates initial animation
+pieSeries.hiddenState.properties.opacity = 1;
+pieSeries.hiddenState.properties.endAngle = -90;
+pieSeries.hiddenState.properties.startAngle = -90;
+
+}); // end am4core.ready()
+                    </script>
+
+                    <!-- HTML -->
+                    <div id="chartdiv"></div>
+                    amCharts
+                </div>
 
                 </div><!-- panel-heading Ends -->
 
@@ -69,6 +153,7 @@
             </div><!-- panel panel-primary Ends -->
 
         </div><!-- col-lg-3 col-md-6 Ends -->
+        }
         </div>
 
 
