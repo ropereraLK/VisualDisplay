@@ -16,7 +16,7 @@ namespace VisualDisplay
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Main", action = "Main", id = UrlParameter.Optional }
             );
         }
     }
