@@ -14,11 +14,17 @@
     <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
+    <script>
+function myFunction() {
+  var x = "Total Height: " + screen.height + "px";
+  //document.getElementById("demo").innerHTML = x;
 
+}
+    </script>
 </head>
-<body>
+<body onload="myFunction()">
 
-
+   
    
     <div class="row">
         <!-- 2 row Starts -->
@@ -26,7 +32,7 @@
         @for (int i = 0; i < 4; i++)
         {
 
-            <div class="col-lg-3 col-md-6" style="min-height:100%">
+            <div class="col-lg-6 col-md-6">
                 <!-- col-lg-3 col-md-6 Starts -->
 
                 <div class="panel">
@@ -35,10 +41,10 @@
                     <div class="panel-heading">
                         <!-- panel-heading Starts -->
 
-                      
+                     
                         <div class="row">
                             <div class="chart-container">
-                                <canvas id="@("chart_"+i.ToString())"></canvas>
+                                <canvas  id="@("chart_"+i.ToString())" width="100" height="45"></canvas>
                             </div>
                         </div>
 
@@ -81,17 +87,21 @@
         var ctx = document.getElementById('chart_0').getContext('2d');
         var chart = new Chart(ctx, {
             // The type of chart we want to create
-            type: 'line',
+            type: 'pie',
 
             // The data for our dataset
-            data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            data : {
                 datasets: [{
-                    label: 'My First dataset',
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: [0, 10, 5, 2, 20, 30, 45]
-                }]
+                    backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f"],
+                    data: [10, 20, 30]
+                }],
+
+                // These labels appear in the legend and in the tooltips when hovering different arcs
+                labels: [
+                    'Blue',
+                    'purple',
+                    'grren'
+                ]
             },
 
             // Configuration options go here
@@ -100,62 +110,68 @@
 
         var ctx = document.getElementById('chart_1').getContext('2d');
         var chart = new Chart(ctx, {
-            // The type of chart we want to create
-            type: 'line',
-
-            // The data for our dataset
+            type: 'bar',
             data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [{
-                    label: 'My First dataset',
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: [0, 10, 5, 2, 20, 30, 45]
-                }]
+                labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+                datasets: [
+                  {
+                      label: "Population (millions)",
+                      backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                      data: [2478, 5267, 734, 784, 433]
+                  }
+                ]
             },
-
-            // Configuration options go here
-            options: {}
+            options: {
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: 'Predicted world population (millions) in 2050'
+                }
+            }
         });
+
 
         var ctx = document.getElementById('chart_2').getContext('2d');
         var chart = new Chart(ctx, {
-            // The type of chart we want to create
-            type: 'line',
-
-            // The data for our dataset
+            type: 'doughnut',
             data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [{
-                    label: 'My First dataset',
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: [0, 10, 5, 2, 20, 30, 45]
-                }]
+                labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+                datasets: [
+                  {
+                      label: "Population (millions)",
+                      backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                      data: [2478, 5267, 734, 784, 433]
+                  }
+                ]
             },
-
-            // Configuration options go here
-            options: {}
+            options: {
+                title: {
+                    display: true,
+                    text: 'Predicted world population (millions) in 2050'
+                }
+            }
         });
-
+        var a = 1000;
         var ctx = document.getElementById('chart_3').getContext('2d');
         var chart = new Chart(ctx, {
-            // The type of chart we want to create
-            type: 'line',
-
-            // The data for our dataset
+            type: 'horizontalBar',
             data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [{
-                    label: 'My First dataset',
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: [0, 10, 5, 2, 20, 30, 45]
-                }]
+                labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+                datasets: [
+                  {
+                      label: "Population (millions)",
+                      backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                      data: [a, 5267, 734, 784, 433]
+                  }
+                ]
             },
-
-            // Configuration options go here
-            options: {}
+            options: {
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: 'Predicted world population (millions) in 2050'
+                }
+            }
         });
 
     </script>
