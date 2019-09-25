@@ -1,0 +1,67 @@
+﻿
+@{
+
+    Layout = null;
+    
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Main</title>
+
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <style>
+        .panelDesign {
+        
+        background-color: white;
+        margin-left:20px;
+        
+        }
+
+    </style>
+
+</head>
+
+<body style="background-color: lightgray">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h4 style="text-align:center; background-color: cadetblue; color: white"> Supplier Complience Stats</h4>
+        </div>
+    </div>
+    <div class="row"  >
+        <div class="col-lg-12" style="padding-left:10px">
+
+           
+            <div class="col-lg-5 col-md-5" style="background-color: white;margin-left:20px">
+                <!-- col-lg-3 col-md-6 Starts -->
+
+
+                @Html.Partial("demo1")
+
+            </div>
+            <div class="col-lg-2 panelDesign">
+                @Html.Partial("absentism")
+
+            </div>
+
+        </div>
+
+    </div>
+  <div class="row" style="padding-left:10px">
+      <div class="col-lg-7" style="background-color:white; margin-left:20px;margin-top:20px;padding-left:10px">
+          @Html.Partial("partialView3")
+
+
+      </div>
+
+  </div>
+
+</body>
+</html>
+
+

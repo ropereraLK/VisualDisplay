@@ -13,5 +13,34 @@ namespace VisualDisplay.Controllers
         {
             return View();
         }
+
+        public PartialViewResult demo() {
+
+
+            return PartialView();
+        }
+
+        public PartialViewResult demo1()
+        {
+
+
+            return PartialView();
+        }
+
+        public PartialViewResult partialView3() {
+
+            return PartialView();
+        }
+
+        public PartialViewResult absentism() {
+
+
+            return PartialView();
+        }
+
+        public ActionResult dashboard()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,130 @@
+﻿
+
+
+@{
+
+    Layout = null;
+
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Main</title>
+
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+
+    </script>
+</head>
+
+<body>
+
+
+    <h4 style="text-align:center; padding:5px">Absenteeism</h4>
+
+    <div class="col-lg-12">
+        <canvas id="chart_absent" width="800" height="700"></canvas>
+        <h5 style="text-align:center">Daily Absentism</h5>
+    </div>
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script>
+        Chart.pluginService.register({
+            beforeDraw: function (chart) {
+                if (chart.config.options.elements.center) {
+                    //Get ctx from string
+                    var ctx = chart.chart.ctx;
+
+                    //Get options from the center object in options
+                    var centerConfig = chart.config.options.elements.center;
+                    var fontStyle = centerConfig.fontStyle || 'Arial';
+                    var txt = centerConfig.text;
+                    var color = centerConfig.color || '#000';
+                    var sidePadding = centerConfig.sidePadding || 20;
+                    var sidePaddingCalculated = (sidePadding / 100) * (chart.innerRadius * 2)
+                    //Start with a base font of 30px
+                    ctx.font = "30px " + fontStyle;
+
+                    //Get the width of the string and also the width of the element minus 10 to give it 5px side padding
+                    var stringWidth = ctx.measureText(txt).width;
+                    var elementWidth = (chart.innerRadius * 2) - sidePaddingCalculated;
+
+                    // Find out how much the font can grow in width.
+                    var widthRatio = elementWidth / stringWidth;
+                    var newFontSize = Math.floor(10 * widthRatio);
+                    var elementHeight = (chart.innerRadius * 2);
+
+                    // Pick a new font size so it will not be larger than the height of label.
+                    var fontSizeToUse = Math.min(newFontSize, elementHeight);
+
+                    //Set font settings to draw it correctly.
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    var centerX = ((chart.chartArea.left + chart.chartArea.right) / 2);
+                    var centerY = ((chart.chartArea.top + chart.chartArea.bottom) / 2);
+                    ctx.font = fontSizeToUse + "px " + fontStyle;
+                    ctx.fillStyle = color;
+
+                    //Draw text in center
+                    ctx.fillText(txt, centerX, centerY);
+                }
+            }
+        });
+        /////////////
+
+
+        var ctx = document.getElementById('chart_absent').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+
+                datasets: [
+                  {
+                      label: "Population (millions)",
+                      backgroundColor: ["#39ac73", "#b3e6cc"],
+                      data: [2478, 5267], borderWidth: 0,
+
+
+                  }
+                ]
+            },
+            options: {
+
+                circumference: 1 * Math.PI,
+                rotation : 1 * Math.PI,
+                cutoutPercentage: 80,
+            elements: {
+            center: {
+            text: '20%',
+            color: '#666666', //Default black
+            fontStyle: 'Helvetica', //Default Arial
+            FontSize: 10,
+            sidePadding: 1 //Default 20 (as a percentage)
+
+        }
+        }
+
+        }
+
+
+
+
+
+        });
+
+       
+
+    </script>
+
+
+
+
+</body>
+</html>
+
+

@@ -1,0 +1,113 @@
+﻿
+@{
+
+    Layout = null;
+
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Main</title>
+
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+    
+                <div class="col-lg-4">
+                    <canvas id="chart_0" width="800" height="800"></canvas>
+                </div>
+                <div class="col-lg-4">
+                    <canvas id="chart_1" width="800" height="800"></canvas>
+                </div>
+                <div class="col-lg-4">
+                    <canvas id="chart_2" width="800" height="800"></canvas>
+                </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script>
+
+
+        var ctx = document.getElementById('chart_0').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+
+                datasets: [
+                  {
+                      label: "Population (millions)",
+                      backgroundColor: ["#3e95cd", "#8e5ea2"],
+                      data: [2478, 5267]
+                  }
+                ]
+            }
+
+        });
+
+        var ctx = document.getElementById('chart_1').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+
+                datasets: [
+                  {
+                      label: "Population (millions)",
+                      backgroundColor: ["#e8c3b9", "#c45850"],
+                      data: [784, 433]
+                  }
+                ]
+            }
+
+        });
+
+        var ctx = document.getElementById('chart_2').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+
+                datasets: [
+                  {
+                      label: "Population (millions)",
+                      backgroundColor: [ "#3cba9f"],
+                      data: [267 ],
+                  }
+                ]
+            }
+
+        });
+        var a = 1000;
+        var ctx = document.getElementById('chart_3').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+                datasets: [
+                  {
+                      label: "Population (millions)",
+                      backgroundColor: [ "#3cba9f", "#e8c3b9"],
+                      data: [5267, 734]
+                  }
+                ]
+            },
+            options: {
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: 'Predicted world population (millions) in 2050'
+                }
+            }
+        });
+
+    </script>
+
+
+
+
+</body>
+</html>
+
+

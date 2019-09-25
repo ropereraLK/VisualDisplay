@@ -241,6 +241,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Main\Main.cshtml" />
+    <Content Include="Views\Main\dashboard.cshtml" />
+    <Content Include="Views\Main\demo.cshtml" />
+    <Content Include="Views\Main\demo1.cshtml" />
+    <Content Include="Views\Main\partialView3.cshtml" />
+    <Content Include="Views\Main\absentism.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
