@@ -1,0 +1,148 @@
+﻿
+@{
+
+    Layout = null;
+
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Main</title>
+
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        .dot {
+  height: 15px;
+  width: 15px;
+ 
+  border-radius: 50%;
+  display: inline-block;
+}
+
+        .tdDesign {
+        text-align:center
+        
+        }
+
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+
+    <h4 style="text-align:center; padding:5px">Breakdown Machines</h4>
+
+    <div class="col-lg-7">
+        <h6 style="color:darkgray">#No of Breakdown Machines</h6>
+        <canvas id="chart_breakdown" width="150" height="50" ></canvas>
+        
+    </div>
+
+    <div class="col-lg-4">
+        <h6 style="color:darkgray">#Machine Shop %</h6>
+        <table class="table">
+          
+                <tr>
+                    <td ><span class="dot" style="background-color:blue"></span></td>
+                    <td style="color:dimgray" >  16% </td>
+                </tr>
+                <tr>
+                    <td><span class="dot" style="background-color:purple"></span></td>
+                    <td style="color:dimgray"> 45%</td>
+                </tr>
+                <tr>
+                    <td><span class="dot" style="background-color:lightgreen"></span></td>
+                    <td style="color:dimgray">  28%</td>
+                </tr>
+       
+       
+        </table>
+        
+    </div>
+  
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    
+
+
+
+
+
+<script>
+    var ctx = document.getElementById('chart_breakdown').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["MS1", "MS2", "H/T"],
+            datasets: [
+              {
+                  label: "Population (millions)",
+                  backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f"],
+                  data: [4,1,2,5]
+              }
+            ]
+        },
+        options: {
+            "hover": {
+                "animationDuration": 0
+            },
+            "animation": {
+                "duration": 1,
+                "onComplete": function () {
+                    var chartInstance = this.chart,
+                    ctx = chartInstance.ctx;
+
+                    ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'bottom';
+
+                    this.data.datasets.forEach(function (dataset, i) {
+                        var meta = chartInstance.controller.getDatasetMeta(i);
+                        meta.data.forEach(function (bar, index) {
+                            var data = dataset.data[index];
+                            ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                        });
+                    });
+                }
+            },
+            legend: {
+                "display": false
+            },
+            tooltips: {
+                "enabled": false
+            },
+            scales: {
+                yAxes: [{
+                    display: false,
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        display: false,
+                        beginAtZero: true
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+
+    </script>
+    </body>
+</html>

@@ -246,6 +246,9 @@
     <Content Include="Views\Main\demo1.cshtml" />
     <Content Include="Views\Main\partialView3.cshtml" />
     <Content Include="Views\Main\absentism.cshtml" />
+    <Content Include="Views\Main\oee.cshtml" />
+    <Content Include="Views\Main\breakDown.cshtml" />
+    <Content Include="Views\Main\planMachine.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

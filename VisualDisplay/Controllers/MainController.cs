@@ -38,6 +38,24 @@ namespace VisualDisplay.Controllers
             return PartialView();
         }
 
+        public PartialViewResult oee() {
+
+            return PartialView();
+        }
+
+        public PartialViewResult breakDown() {
+
+
+            return PartialView();
+        }
+
+        public PartialViewResult planMachine()
+        {
+
+
+            return PartialView();
+        }
+
         public ActionResult dashboard()
         {
             return View();
